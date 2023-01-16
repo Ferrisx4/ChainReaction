@@ -6,6 +6,7 @@ if (count($argv) == 3) {
 else {
     echo "You didn't enter the right number of arguments\n";
     echo "You need to enter two words.\n";
+    die();
 }
 
 // Load the big ol' word list.
