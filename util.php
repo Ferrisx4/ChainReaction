@@ -17,7 +17,13 @@ function add($primary, $secondary, &$words) {
     else {
         $words[$primary] = [$secondary];
     }
-    $words[$primary] = array_unique($words[$primary]);
+    // Make sure not to allow infinite loops (no buffalo buffalo, sorry).
+    if ($primary != $secondary){
+        $words[$primary] = array_unique($words[$primary]);
+    }
+    else {
+        echo "No infinite loops! Nice try!\n";
+    }
 }
 
 
@@ -36,6 +42,7 @@ function load() {
 
         fclose($handle);
     }
+    echo "Loaded word list.\n";
 
     return $words;
 }
@@ -51,4 +58,20 @@ function save(&$words) {
         fputcsv($handle, $secondary);
     }
     fclose($handle);
+}
+
+/**
+ * Find penultimate words: words whose secondary words have no children.
+ */
+function find_penultimates(&$words) {
+    $count = 0;
+    foreach ($words as $parent) {
+        foreach ($parent as $child) {
+            if (array_key_exists($child,$words)) {
+                $count += 1;
+            }
+        }
+        echo "Count of " . $child . ": " . $count . "\n";
+        $count = 0;
+    }
 }
