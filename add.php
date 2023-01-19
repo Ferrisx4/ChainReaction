@@ -4,7 +4,6 @@ include 'util.php';
 
 // Load the words
 $words = load();
-print_r($words);
 // Loop through user inputs, appending new words.
 $line ='';
 while($line != 'end') {
