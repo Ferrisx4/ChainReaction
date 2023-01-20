@@ -9,9 +9,12 @@ define('FILE', 'words.txt');
  * not exist. If the key already exists, just add the new
  * word
  * 
- * @input $primary the key
- * @input $secondary the word to add to the key
- * @input &$words the word list
+ * @param string $primary
+ *  the key, the "parent" word to be added or added to
+ * @param string $secondary
+ *  the "child" word to be added to the "parent"'s list.
+ * @param array &$words
+ *  the word list
  */
 function add($primary, $secondary, &$words) {
     if ($primary == $secondary) {
@@ -49,6 +52,9 @@ function load() {
 
 /**
  * Save the word list to the file.
+ * 
+ * @param array $words
+ *  The word list to save.
  */
 function save(&$words) {
     $handle = fopen(FILE, "w") or die("Unable to open file for writing.\n");
@@ -61,8 +67,10 @@ function save(&$words) {
 
 /**
  * Find words that don't have children.
- * @param $words word list
- * @param $print do I print the words as well as return them?
+ * @param array $words
+ *  word list
+ * @param boolean $print
+ *  do I print the words as well as return them?
  */
 function find_childless(&$words,$print = FALSE) {
     $childless_words = [];
