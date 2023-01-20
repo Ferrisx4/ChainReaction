@@ -1,5 +1,8 @@
 <?php
 
+// Set the file location
+define('FILE', 'words.txt');
+
 /**
  * Adds a new key if it does not exist, and a new word
  * that belongs in a chain to that key, again, if it does
@@ -11,18 +14,14 @@
  * @input &$words the word list
  */
 function add($primary, $secondary, &$words) {
-    if (array_key_exists($primary, $words)) {
+    if ($primary == $secondary) {
+        echo "No infinite loops! Nice try!\n";
+    }
+    else if (array_key_exists($primary, $words)) {
         array_push( $words[$primary] , $secondary );
     }
     else {
         $words[$primary] = [$secondary];
-    }
-    // Make sure not to allow infinite loops (no buffalo buffalo, sorry).
-    if ($primary != $secondary){
-        $words[$primary] = array_unique($words[$primary]);
-    }
-    else {
-        echo "No infinite loops! Nice try!\n";
     }
 }
 
@@ -32,7 +31,7 @@ function add($primary, $secondary, &$words) {
  */
 function load() {
     $words = [];
-    $handle = fopen("words.txt", "r") or die("Unable to open file for reading.\n");
+    $handle = fopen(FILE, "r") or die("Unable to open file for reading.\n");
     if ($handle) {
         while (($line = fgetcsv($handle)) !== false) {
             // process the line read.
@@ -52,7 +51,7 @@ function load() {
  * Save the word list to the file.
  */
 function save(&$words) {
-    $handle = fopen("words.txt", "w") or die("Unable to open file for writing.\n");
+    $handle = fopen(FILE, "w") or die("Unable to open file for writing.\n");
     foreach($words as $primary => $secondary) {
         array_unshift($secondary,$primary);
         fputcsv($handle, $secondary);
@@ -61,17 +60,25 @@ function save(&$words) {
 }
 
 /**
- * Find penultimate words: words whose secondary words have no children.
+ * Find words that don't have children.
+ * @param $words word list
+ * @param $print do I print the words as well as return them?
  */
-function find_penultimates(&$words) {
-    $count = 0;
+function find_childless(&$words,$print = FALSE) {
+    $childless_words = [];
     foreach ($words as $parent) {
         foreach ($parent as $child) {
-            if (array_key_exists($child,$words)) {
-                $count += 1;
+            if (!array_key_exists($child,$words)) {
+                array_push($childless_words,$child);
             }
+            
         }
-        echo "Count of " . $child . ": " . $count . "\n";
-        $count = 0;
     }
+    if ($print) {
+        foreach($childless_words as $nk) {
+            echo $nk . "\n";
+        }
+    }
+
+    return($childless_words);
 }
