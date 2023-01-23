@@ -9,22 +9,43 @@ define('FILE', 'words.txt');
  * not exist. If the key already exists, just add the new
  * word
  * 
- * @param string $primary
+ * @param string $parent
  *  the key, the "parent" word to be added or added to
- * @param string $secondary
+ * @param string $child
  *  the "child" word to be added to the "parent"'s list.
  * @param array &$words
  *  the word list
  */
-function add($primary, $secondary, &$words) {
-    if ($primary == $secondary) {
+function add($parent, $child, &$words) {
+    if ($parent == $child) {
         echo "No infinite loops! Nice try!\n";
     }
-    else if (array_key_exists($primary, $words)) {
-        array_push( $words[$primary] , $secondary );
+    // If the parent already exists
+    else if (array_key_exists($parent, $words)) {
+        // Check if the child exists
+        if(array_search($child,$words[$parent]) === FALSE) {
+            // Suggest other words
+            $first_suggestion = TRUE;
+            $suggest_string = "Other " . $parent . " words: ";
+            foreach ($words[$parent] as $older_kid) {
+                if($first_suggestion) {
+                    $suggest_string .= "\"" . $older_kid . "\"";
+                    $first_suggestion = FALSE;
+                }
+                else {
+                    $suggest_string .= ", " . "\"" . $older_kid . "\"";
+                }
+
+            }
+            echo $suggest_string . "\n";
+            
+            // Add the new word after suggesting other words.
+            array_push( $words[$parent] , $child );
+
+        }
     }
     else {
-        $words[$primary] = [$secondary];
+        $words[$parent] = [$child];
     }
 }
 
@@ -58,9 +79,9 @@ function load() {
  */
 function save(&$words) {
     $handle = fopen(FILE, "w") or die("Unable to open file for writing.\n");
-    foreach($words as $primary => $secondary) {
-        array_unshift($secondary,$primary);
-        fputcsv($handle, $secondary);
+    foreach($words as $parent => $child) {
+        array_unshift($child,$parent);
+        fputcsv($handle, $child);
     }
     fclose($handle);
 }
@@ -79,7 +100,6 @@ function find_childless(&$words,$print = FALSE) {
             if (!array_key_exists($child,$words)) {
                 array_push($childless_words,$child);
             }
-            
         }
     }
     if ($print) {
@@ -89,4 +109,42 @@ function find_childless(&$words,$print = FALSE) {
     }
 
     return($childless_words);
+}
+
+/**
+ * Get all words in list.
+ * 
+ * @param array &$words
+ *  The regular list of words and their children.
+ * @return array
+ *  The entire list of words, including children. The words are the key,
+ *  as an added bonus, the number of times they appear is the value.
+ */
+function get_all_words(&$words) {
+    $all_words = [];
+    foreach ($words as $parent) {
+        foreach ($parent as $child) {
+            if (array_key_exists($child, $all_words)) {
+                $all_words[$child] += 1;
+            }
+            else {
+                $all_words[$child] = 1;
+            }
+        }
+    }
+    array_multisort($all_words);
+    return $all_words;
+}
+
+/**
+ * Remove duplicate children, just in case.
+ *
+ * @param array &$words
+ *  The regular list of words and their children.
+ */
+function dedup_children(&$words) {
+    foreach ($words as $key => $parent) {
+        $words[$key] = array_unique($parent, SORT_STRING);
+    }
+    save($words);
 }
