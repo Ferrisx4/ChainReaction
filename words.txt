@@ -414,7 +414,7 @@ carriage,horse
 pipe,bomb
 federal,agent,government
 plastic,bag
-camera,ba,bag
+camera,bag,lens
 cinnamon,stick
 bulletproof,vest
 armored,car
@@ -589,7 +589,7 @@ laced,up
 chap,stick
 screen,door
 milk,dud,jug,bottle
-cow,udder
+cow,udder,farm,milk
 prop,plane
 propeller,plane
 dorm,room
@@ -598,3 +598,13 @@ penthouse,suite,level,elevator
 dream,catcher,boat
 lead,battery
 book,return,cover,burning
+juice,box,bar,cleanse
+bus,pass,station,lane,stop
+public,transit,hearing,event
+private,event
+farm,hand
+razor,blade
+safety,razor
+film,camera
+transit,station
+campaign,slogan,ad
