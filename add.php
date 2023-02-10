@@ -10,6 +10,8 @@ $line ='';
 // Get the list of childless words for suggestions.
 $childless = find_childless($words);
 
+$word_pairs = count_word_pairs($words);
+
 while($line != 'end') {
     $line = readline('Enter a new word pair, space separated: ');
     $wordsToAdd = explode(' ', $line);
@@ -29,3 +31,7 @@ while($line != 'end') {
 
 // Save the words.
 save($words);
+
+$new_pairs = count_word_pairs($words) - $word_pairs;
+
+echo $new_pairs . " new pairs added.\n";

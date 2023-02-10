@@ -41,7 +41,7 @@ function add($parent, $child, &$words) {
             
             // Add the new word after suggesting other words.
             array_push( $words[$parent] , $child );
-
+            
         }
     }
     else {
@@ -147,4 +147,23 @@ function dedup_children(&$words) {
         $words[$key] = array_unique($parent, SORT_STRING);
     }
     save($words);
+}
+
+/**
+ * Count all word pairs.
+ * 
+ * @param array &$words
+ *  The regular list of words and their children.
+ * 
+ * @return int
+ *  The number of word pairs.
+ */
+function count_word_pairs(&$words) {
+    $count = 0;
+
+    foreach ($words as $word) {
+        $count += (count($word));
+    }
+
+    return $count;
 }
