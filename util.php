@@ -167,3 +167,30 @@ function count_word_pairs(&$words) {
 
     return $count;
 }
+
+/**
+ * Count distinct words
+ * 
+ * @param array &$words
+ *  The regular list of words and their children.
+ * 
+ * @return int
+ *  The number of unique words.
+ */
+function count_words($words) {
+    $uwords = [];
+
+    foreach($words as $word => $parent) {
+        // Add the parent word
+        array_push($uwords,$word);
+        // Cycle through the children and add them.
+        foreach ($parent as $child) {
+            array_push($uwords,$child);
+        }
+    }
+
+    // Make the array unique, naively.
+    $uwords = array_unique($uwords);
+
+    return count($uwords);
+}
