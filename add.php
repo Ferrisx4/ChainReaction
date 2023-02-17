@@ -11,9 +11,9 @@ $line ='';
 $childless = find_childless($words);
 
 $word_pairs = count_word_pairs($words);
+$line = readline('Enter a new word pair, space separated: ');
 
 while($line != 'end') {
-    $line = readline('Enter a new word pair, space separated: ');
     $wordsToAdd = explode(' ', $line);
     
     // Suggest a word
@@ -26,6 +26,15 @@ while($line != 'end') {
     if (count($wordsToAdd) > 1) {
         add($wordsToAdd[0],$wordsToAdd[1],$words);
     }
+    elseif (substr_count($wordsToAdd[0],'?')) {
+        $wordsToAdd[0] = rtrim($wordsToAdd[0],"?");
+        echo "Other " . $wordsToAdd[0] . " words: " . print_children_nicely(get_children($words,$wordsToAdd[0])) . "\n";
+    }
+    else {
+        echo "Please enter two words, separated by a space.\n";
+    }
+
+    $line = readline('Enter a new word pair, space separated: ');
 }
 
 
