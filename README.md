@@ -40,6 +40,13 @@ water,gun
 ```
 Typing `suggest` will find a child word that has no children of its own and suggest it for you. This makes the word list more robust with fewer "dead-ends" for the algorithm to stop processing through.
 
+Typing a single word followed by a question mark will return a list of children words that already exist.
+For example:
+```
+string?
+Other string words: instrument, cheese, quartet, theory
+```
+
 Typing `end` will end input mode and save the new words into the file.
 
 The add functionality is robust in that it will not allow for repeated parent,child pairs.
