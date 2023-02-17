@@ -25,18 +25,8 @@ function add($parent, $child, &$words) {
         // Check if the child exists
         if(array_search($child,$words[$parent]) === FALSE) {
             // Suggest other words
-            $first_suggestion = TRUE;
             $suggest_string = "Other " . $parent . " words: ";
-            foreach ($words[$parent] as $older_kid) {
-                if($first_suggestion) {
-                    $suggest_string .= "\"" . $older_kid . "\"";
-                    $first_suggestion = FALSE;
-                }
-                else {
-                    $suggest_string .= ", " . "\"" . $older_kid . "\"";
-                }
-
-            }
+            $suggest_string .= print_children_nicely($words[$parent]);
             echo $suggest_string . "\n";
             
             // Add the new word after suggesting other words.
@@ -177,7 +167,7 @@ function count_word_pairs(&$words) {
  * @return int
  *  The number of unique words.
  */
-function count_words($words) {
+function count_words(&$words) {
     $uwords = [];
 
     foreach($words as $word => $parent) {
@@ -193,4 +183,44 @@ function count_words($words) {
     $uwords = array_unique($uwords);
 
     return count($uwords);
+}
+
+/**
+ * Get children of a single parent.
+ * 
+ * @param array &$words
+ *  The regular list of words and their children.
+ * @param string $parent
+ *  The parent word for whose kids we are searching.
+ * 
+ * @return array
+ *  An array of strings representing the children of that word. May be empty.
+ */
+function get_children(&$words,$parent) {
+    return $words[$parent];
+}
+
+/**
+ * Print children nicely.
+ * 
+ * @param array $children
+ *  An array of strings.
+ * 
+ * @return string
+ *  A nice string of children, separated by a comma and a space.
+ *  FALSE on error.
+ */
+function print_children_nicely($children) {
+    $results = '';
+
+    if (count($children) == 0) {
+        echo "Error: No children\n";
+        return FALSE;
+    }
+    foreach ($children as $child) {
+        $results .= $child . ", ";
+    }
+    $results = rtrim($results,', ');
+    
+    return $results;
 }
