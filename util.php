@@ -112,8 +112,14 @@ function find_childless(&$words,$print = FALSE) {
  */
 function get_all_words(&$words) {
     $all_words = [];
-    foreach ($words as $parent) {
-        foreach ($parent as $child) {
+    foreach ($words as $parent => $children) {
+        if (array_key_exists($parent, $all_words)) {
+            $all_words[$parent] += 1;
+        }
+        else {
+            $all_words[$parent] = 1;
+        }
+        foreach ($children as $child) {
             if (array_key_exists($child, $all_words)) {
                 $all_words[$child] += 1;
             }
@@ -168,21 +174,9 @@ function count_word_pairs(&$words) {
  *  The number of unique words.
  */
 function count_words(&$words) {
-    $uwords = [];
+    $all = get_all_words($words);
 
-    foreach($words as $word => $parent) {
-        // Add the parent word
-        array_push($uwords,$word);
-        // Cycle through the children and add them.
-        foreach ($parent as $child) {
-            array_push($uwords,$child);
-        }
-    }
-
-    // Make the array unique, naively.
-    $uwords = array_unique($uwords);
-
-    return count($uwords);
+    return count($all);
 }
 
 /**
