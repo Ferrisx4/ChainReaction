@@ -137,12 +137,20 @@ function get_all_words(&$words) {
  *
  * @param array &$words
  *  The regular list of words and their children.
+ * 
+ * @return string
+ *  The number of duplicates removed.
  */
 function dedup_children(&$words) {
+    $removed = 0;
     foreach ($words as $key => $parent) {
+        $before = count($parent);
         $words[$key] = array_unique($parent, SORT_STRING);
+        $removed += $before - count($words[$key]);
     }
     save($words);
+    
+    return $removed;
 }
 
 /**
