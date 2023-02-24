@@ -28,10 +28,13 @@ while($line != 'end') {
     }
     elseif (substr_count($wordsToAdd[0],'?')) {
         $wordsToAdd[0] = rtrim($wordsToAdd[0],"?");
-        echo "Other " . $wordsToAdd[0] . " words: " . print_children_nicely(get_children($words,$wordsToAdd[0])) . "\n";
-    }
-    else {
-        echo "Please enter two words, separated by a space.\n";
+        $children = get_children($words,$wordsToAdd[0]);
+        if ($children) {
+            echo "Other " . $wordsToAdd[0] . " words: " . print_children_nicely($children) . "\n";
+        }
+        else {
+            echo "No " . $wordsToAdd[0] . "words yet, try adding some!\n";
+        }
     }
 
     $line = readline('Enter a new word pair, space separated: ');
