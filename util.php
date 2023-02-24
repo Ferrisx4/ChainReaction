@@ -24,17 +24,17 @@ function add($parent, $child, &$words) {
     else if (array_key_exists($parent, $words)) {
         // Check if the child exists
         if(array_search($child,$words[$parent]) === FALSE) {
-            // Suggest other words
-            $suggest_string = "Other " . $parent . " words: ";
-            $suggest_string .= print_children_nicely($words[$parent]);
-            echo $suggest_string . "\n";
             
             // Add the new word after suggesting other words.
             array_push( $words[$parent] , $child );
-            
         }
+        // Suggest other words
+        $suggest_string = "Existing " . $parent . " words: ";
+        $suggest_string .= print_children_nicely($words[$parent]);
+        echo $suggest_string . "\n";
     }
     else {
+        echo "New root word!\n";
         $words[$parent] = [$child];
     }
 }

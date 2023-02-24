@@ -30,10 +30,10 @@ while($line != 'end') {
         $wordsToAdd[0] = rtrim($wordsToAdd[0],"?");
         $children = get_children($words,$wordsToAdd[0]);
         if ($children) {
-            echo "Other " . $wordsToAdd[0] . " words: " . print_children_nicely($children) . "\n";
+            echo "Existing " . $wordsToAdd[0] . " words: " . print_children_nicely($children) . "\n";
         }
         else {
-            echo "No " . $wordsToAdd[0] . "words yet, try adding some!\n";
+            echo "No \"" . $wordsToAdd[0] . "\" words yet, try adding some!\n";
         }
     }
 
