@@ -196,10 +196,15 @@ function count_words(&$words) {
  *  The parent word for whose kids we are searching.
  * 
  * @return array
- *  An array of strings representing the children of that word. May be empty.
+ *  An array of strings representing the children of that word, or FALSE
+ *  if there are no children.
  */
 function get_children(&$words,$parent) {
-    return $words[$parent];
+    if (array_key_exists($parent, $words)) {
+        return $words[$parent];
+    }
+    else
+        return FALSE;
 }
 
 /**
