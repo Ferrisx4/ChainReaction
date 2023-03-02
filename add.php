@@ -23,7 +23,7 @@ while($line != 'end') {
             echo "Suggestion: " . $childless[$rand_word] . "\n";
         }
     }
-    if (count($wordsToAdd) > 1) {
+    elseif (count($wordsToAdd) > 1) {
         add($wordsToAdd[0],$wordsToAdd[1],$words);
     }
     elseif (substr_count($wordsToAdd[0],'?')) {
@@ -35,6 +35,9 @@ while($line != 'end') {
         else {
             echo "No \"" . $wordsToAdd[0] . "\" words yet, try adding some!\n";
         }
+    }
+    elseif (count($wordsToAdd) == 1) {
+        echo "You forgot your second word! Try it again...\n";
     }
 
     $line = readline('Enter a new word pair, space separated: ');
