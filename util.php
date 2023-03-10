@@ -30,7 +30,7 @@ function add($parent, $child, &$words) {
         }
         // Suggest other words
         $suggest_string = "Existing " . $parent . " words: ";
-        $suggest_string .= print_children_nicely($words[$parent]);
+        $suggest_string .= print_children_nicely($words[$parent], $child);
         echo $suggest_string . "\n";
     }
     else {
@@ -217,15 +217,21 @@ function get_children(&$words,$parent) {
  *  A nice string of children, separated by a comma and a space.
  *  FALSE on error.
  */
-function print_children_nicely($children) {
+function print_children_nicely($children, $candidate="") {
     $results = '';
 
     if (count($children) == 0) {
         echo "Error: No children\n";
         return FALSE;
     }
+
     foreach ($children as $child) {
-        $results .= $child . ", ";
+        if ($candidate == $child) {
+            $results .= strtoupper($child) . ", ";
+        }
+        else {
+            $results .= $child . ", ";
+        }
     }
     $results = rtrim($results,', ');
     
