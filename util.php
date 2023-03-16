@@ -213,6 +213,9 @@ function get_children(&$words,$parent) {
  * @param array $children
  *  An array of strings.
  * 
+ * @param string $candidate 
+ *  Optional. A possibly new word. Make fully uppercase to distinguish.
+ * 
  * @return string
  *  A nice string of children, separated by a comma and a space.
  *  FALSE on error.
@@ -235,5 +238,41 @@ function print_children_nicely($children, $candidate="") {
     }
     $results = rtrim($results,', ');
     
+    return $results;
+}
+
+/**
+ * Get the parent word(s) with the highest number of children.
+ * 
+ * @param array &$words
+ *  The regular list of words and their children.
+ * 
+ * @return array
+ *  An array containing the word(s) and their children quantity.
+ */
+function get_most_children(&$words) {
+    $sorted_words = [];
+    $max = 0;
+    $top_words = [];
+
+    foreach($words as $parent => $child) {
+        $sorted_words[$parent] = count($child);
+        if (count($child) > $max) {
+            $max = count($child);
+        }
+    }
+
+    // Sort the array by value.
+    arsort($sorted_words);
+    foreach ($sorted_words as $sorted_word => $size) {
+        if ($size == $max) {
+            //array_push($top_words,array($sorted_word, $size));
+            array_push($top_words, $sorted_word);
+        }
+    }
+    //$top_words['size'] = $max;
+
+    $results['words'] = $top_words;
+    $results['size'] = $max;
     return $results;
 }
