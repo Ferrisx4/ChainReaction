@@ -49,4 +49,4 @@ save($words);
 
 $new_pairs = count_word_pairs($words) - $word_pairs;
 
-echo $new_pairs . " new pairs added.\n";
+echo $new_pairs . " new pair" . (($new_pairs == 1) ? "" : "s" ) . " added.\n";
