@@ -168,5 +168,14 @@ function chain_dive($next) {
 
 $depth = 1;
 $chain_found = chain_dive($start);
-echo "\nFinal: \n";
-print_r($final_chain);
+
+if ($chain_found) {
+    echo "\nChain Found: \n";
+    foreach ($final_chain as $chainword) {
+        echo "\t$chainword\n";
+    }
+    echo "\n";
+}
+else {
+    echo "No chain found!\n";
+}
