@@ -61,13 +61,14 @@ function chain_dive($next) {
     }
 
     if ($chain_found) {
-        return 'chain_found';
+        //return 'chain_found';
     }
     // Case: Valid chain found!
-    elseif ($depth == $chain_length_target && $chain[count($chain)-1] == $end) {
+    if ($depth == $chain_length_target && $chain[count($chain)-1] == $end) {
         if ($debug) {echo "breaking\n";}
         $chain_found = TRUE;
-        $final_chain = $chain;
+        //$final_chain = $chain;
+        array_push($final_chain, $chain);
         return 'chain_found';
     }
     // Case: Chain is not at max depth yet
@@ -78,7 +79,7 @@ function chain_dive($next) {
         if (array_key_exists($next,$words)) {
             foreach ($words[$next] as $next_child) {
                 $depth += 1;
-                    if (!$chain_found) { 
+                    if (TRUE) { 
                     if ($debug) {
                         echo "testing " . $next . " > " . $next_child . "\n";
                         print_r($chain) . "\n";
@@ -111,7 +112,9 @@ function chain_dive($next) {
                         elseif ($action == 'chain_found')
                         {
                             if ($debug) {echo "Action = success\n";}
-                            return 'chain_found';
+                            array_pop($chain);
+                            $depth -= 1;
+                            //return 'chain_found';
                         }
                         else {
                             // At this point lets assume this word didn't pan out and pop it, but don't decrement depth.
@@ -169,13 +172,18 @@ function chain_dive($next) {
 $depth = 1;
 $chain_found = chain_dive($start);
 
-if ($chain_found) {
-    echo "\nChain Found: \n";
-    foreach ($final_chain as $chainword) {
-        echo "\t$chainword\n";
+if (count($final_chain) > 0) {
+    $chain_no = 1;
+    foreach ($final_chain as $found_chain) {
+        echo "\nChain #" . $chain_no . ":\n";
+        foreach ($found_chain as $chainword) {
+            echo "\t$chainword\n";
+        }
+        echo "\n";
+        $chain_no += 1;
     }
     echo "\n";
 }
 else {
-    echo "No chain found!\n";
+    echo "No chains found!\n";
 }
