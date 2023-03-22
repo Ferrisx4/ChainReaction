@@ -14,7 +14,7 @@ This program consists of several parts:
 ### Data Structure
 The data structure that makes the most sense for this project and its design goals is an associate array. In PHP, these are
 implemented with hash tables which should be fast enough. Each
-"parent" word is the key in the main words array, and each value is an array itself of "child" words. For the most part, there will not be many children per word.
+"parent" word is the key in the main words array, and each value is an array itself of "child" words. For the most part, there will not be many children per parent, but children can be their own parents.
 The downside of this approach is that the memory required to store the word list may expand greatly as each "child" word will be stored as a string, and many words will be repeated throughout the words list. For instance:
 ```
 remote,worker
@@ -24,9 +24,18 @@ hard,worker
 ```
 
 ### Solving algorithm.
-The algorithm will be supplied with a starting word, the ending word, the main words array, and the chain length. It will iterate through the words array in a depth-first fashion. It will end either when it has found a word chain that satisfies the starting and ending word within the specified chain length, or it will report that it could not find a valid chain.
+The algorithm will be supplied with a starting word, the ending word, the main words array, and the chain length. It will iterate through the words array in a depth-first fashion. It will end either when it has found all word chains that satisfy the starting and ending word within the specified chain length, or it will report that it could not find a valid chain.
 
 ## To Use
+The scripts have 3 main functions:
+ 1. Word Ingestion (`add.php`)
+    - Add new word pairs to the set of word pairs.
+ 2. Chain Solving (`chainreaction.php`)
+    - Solves a chain, if possible, when given a starting word, an ending word, and a target chain length.
+    - By default, will return all valid chains.
+ 3. Chain Creation (`chaincreate.php`)
+    - **Work in progress**
+    - Can be used to generate puzzles randomly when given a target chain length.
 
 ### Word Ingestion
 Run add.php with no arguments. You will be prompted to supply word pairs. You will repeat the parent word for each entry, for example:
@@ -49,8 +58,42 @@ Other string words: instrument, cheese, quartet, theory
 
 Typing `end` will end input mode and save the new words into the file.
 
-The add functionality is robust in that it will not allow for repeated parent,child pairs.
+The *add* functionality is robust in that it will not allow for repeated parent,child pairs.
 If a word list is manually input, a utility function is available to remove duplicates. More housekeeping functionality may be added in the future.
 
-### Puzzle Solving (Work-in-progress)
-This is still being worked on. For now, please add to the word list.
+### Puzzle Solving
+The `chainreaction.php` script will use a depth-first recursive technique to search through the word set to find suitable word chains.
+
+#### Arguments
+The `chainreaction.php` script takes three arguments:
+ 1. starting word
+ 2. ending word
+ 3. length of word (inclusive)
+
+#### Example
+```bash
+$ php chainreaction.php
+Chain #1:
+        tipping
+        point
+        taken
+        back
+        yard
+        goat
+
+
+Chain #2:
+        tipping
+        point
+        blank
+        space
+        mountain
+        goat
+```
+
+#### Planned functionality - Solving
+ - [x] Multiple Chain Finding.
+ - [ ] Toggleable chain finding (for large chain lengths, it can be quite slow to find all chains).
+
+### Puzzle Creation (work-in-progress)
+The program will be able
