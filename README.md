@@ -1,10 +1,10 @@
 # Chain Reaction
-Based on the Game Show Network show of the same name.
+Based on the [Game Show Network show](https://www.gameshownetwork.com/chain-reaction "Link to Game Show Network page for Chain Reaction") of the same name.
 It is designed to take two words and a number of empty spaces and fill in the blanks, as is the challenge on the game.
 
 ## Design
 This program consists of several parts:
- - Word Pair ingestion from CSV or something. Currently, input is manual (add.php).
+ - Word Pair ingestion script which stores the data in a CSV file. Currently, input is manual (add.php).
  - Data structure to store this data for quick searching.
  - Alrgorithm to cycle through the data to find an appropriate chain.
 
@@ -97,3 +97,8 @@ Chain #2:
 
 ### Puzzle Creation (work-in-progress)
 The program will be able
+
+---
+
+Special thanks to the Game Show Network for creating the game and also for many of the word pairs that exist in the database. Also thanks to my aunt who will write down chains for me to add when I miss part of an episode.
+
