@@ -34,8 +34,6 @@ else {
     die();
 }
 
-$dives = 0;
-
 // Main loop. Check each iteration that we don't use the same word twice.
 // Traverse as deep as the chain length argument - 1
 // 
@@ -47,9 +45,6 @@ function chain_dive($next) {
     global $chain_length_target;
     global $end;
     global $words;
-    global $dives;
-
-    $dives += 1;
 
     $debug = FALSE;
 
@@ -216,5 +211,3 @@ if (count($final_chain) > 0) {
 else {
     echo "No chains found!\n";
 }
-
-echo "Dives: " . $dives . "\n";
