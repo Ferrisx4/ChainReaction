@@ -34,6 +34,8 @@ else {
     die();
 }
 
+$dives = 0;
+
 // Main loop. Check each iteration that we don't use the same word twice.
 // Traverse as deep as the chain length argument - 1
 // 
@@ -45,6 +47,9 @@ function chain_dive($next) {
     global $chain_length_target;
     global $end;
     global $words;
+    global $dives;
+
+    $dives += 1;
 
     $debug = FALSE;
 
@@ -71,6 +76,10 @@ function chain_dive($next) {
         array_push($final_chain, $chain);
         return 'chain_found';
     }
+    // Case word was added that was already in the chain
+    elseif(repeatCheck($chain)) {
+        return 'already_in_chain';
+    }
     // Case: Chain is not at max depth yet
     // Action: Recurse into $next's children
     elseif ($depth < $chain_length_target) {
@@ -85,12 +94,12 @@ function chain_dive($next) {
                         print_r($chain) . "\n";
                     } 
                     // if $next is already in chain, do nothing
-                    if (in_array($next_child, $chain) && $depth != 1) {
+                    /*if (in_array($next_child, $chain) && $depth != 1) {
                         if ($debug) {echo $next_child . " is already in the chain:\n";}
                         //print_r($chain);
                         $depth -= 1;
                         return 'already_in_chain';
-                    }
+                    }*/
                     // if $next is childless, do nothing
         
         
@@ -115,6 +124,11 @@ function chain_dive($next) {
                             array_pop($chain);
                             $depth -= 1;
                             //return 'chain_found';
+                        }
+                        elseif ($action == 'aleady_in_chain') {
+                            echo "action = already_in_chain\n";
+                            array_pop($chain);
+                            $depth -= 1;
                         }
                         else {
                             // At this point lets assume this word didn't pan out and pop it, but don't decrement depth.
@@ -169,6 +183,21 @@ function chain_dive($next) {
     }
 }
 
+/**
+ * Checks current chain for repeats. Returns TRUE if there are repeats,
+ * FALSE if not.
+ */
+function repeatCheck($chain) {
+    $count = array_count_values($chain);
+    $last = array_pop($chain);
+    if ($count[$last] > 1) {
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
+}
+
 $depth = 1;
 $chain_found = chain_dive($start);
 
@@ -187,3 +216,5 @@ if (count($final_chain) > 0) {
 else {
     echo "No chains found!\n";
 }
+
+echo "Dives: " . $dives . "\n";
