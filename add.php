@@ -7,8 +7,7 @@ $words = load();
 // Loop through user inputs, appending new words.
 $line ='';
 
-// Get the list of childless words for suggestions.
-$childless = find_childless($words);
+$childless = NULL;
 
 $word_pairs = count_word_pairs($words);
 $line = readline('Enter a new word pair, space separated: ');
@@ -18,6 +17,9 @@ while($line != 'end') {
     
     // Suggest a word
     if($line == 'suggest') {
+        if (!$childless) {
+            $childless = find_childless($words);
+        }
         if (count($childless) == 0) { echo "No childless words to suggest!\n"; } else {
             $rand_word = array_rand($childless);
             echo "Suggestion: " . $childless[$rand_word] . "\n";
