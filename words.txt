@@ -70,7 +70,7 @@ one,way,sided,second,direction
 way,forward,back,behind,station
 far,away,out,gone,reach
 hall,pass,mark,monitor,light
-pass,gas,away,out,word,along,judgement,muster,time,through,port,over
+pass,gas,away,out,word,along,judgement,muster,time,through,port,over,inspection
 gas,station,tank,pump,engine,main,mask,grill
 incomplete,pass
 hackey,sack
@@ -406,7 +406,7 @@ monitor,stand,lizard
 desktop,icon,computer
 trash,can,talk
 recycle,bin
-chop,stick,sticks,down
+chop,stick,sticks,down,shop
 soy,sauce,boy,bean
 covered,wagon
 wagon,wheel
@@ -556,7 +556,7 @@ anime,betrayal
 church,bell,steeple
 doing,fine
 fine,art,print,china
-school,bell,bus,child,lunch,spirit,recess,kid,zone,work,district,bag,night,play,book,room
+school,bell,bus,child,lunch,spirit,recess,kid,zone,work,district,bag,night,play,book,room,supplies,yard,house
 art,school,museum,gallery,deco
 law,school,firm,man
 heavy,lifting,weight,duty,metal,metals,sleeper,traffic
@@ -1006,7 +1006,7 @@ tootsie,roll
 roll,away,call,over
 cabin,pressure,crew,fever
 pressure,point
-happy,hour,birthday,easter,hanukkah,medium,trail,days,day,anniversary,meal,camper
+happy,hour,birthday,easter,hanukkah,medium,trail,days,day,anniversary,meal,camper,holidays
 hour,hand,glass
 florida,orange
 orange,chicken,julius,soda
@@ -1310,7 +1310,7 @@ sled,dog
 wise,owl,man,decision,crack
 glue,stick,together
 piggy,bank,back
-splash,mountain
+splash,mountain,guard
 paradise,lost
 tropical,island
 write,off,down
@@ -2672,3 +2672,6 @@ independent,variable
 quare,root
 canal,boat
 tomb,stone
+statement,piece
+toss,up
+razzle,dazzle
