@@ -124,8 +124,8 @@ function chain_dive($next) {
                             $depth -= 1;
                             //return 'chain_found';
                         }
-                        elseif ($action == 'aleady_in_chain') {
-                            echo "action = already_in_chain\n";
+                        elseif ($action == 'already_in_chain') {
+                            if ($debug) {echo "action = already_in_chain - action response\n";}
                             array_pop($chain);
                             $depth -= 1;
                         }
@@ -135,7 +135,7 @@ function chain_dive($next) {
                             $depth -= 1;
                         }
                         else {
-                            // At this point lets assume this word didn't pan out and pop it, but don't decrement depth.
+                            // At this point lets assume this word didn't pan out and pop it, and also decrement depth.
                             if ($debug) {
                                 echo "Unhandled action";
                                 echo "\tCurrent chain: \n";
@@ -143,7 +143,7 @@ function chain_dive($next) {
                                 echo "\tNext word: " . $next_child . "\n";
                                 echo "\tChain length target: " . $chain_length_target . "\n";
                                 echo "\tDepth: " . $depth . "\n\n";
-                                echo "\t Action: " . $action . "\n\n";
+                                echo "\tUnhandled Action: " . $action . "\n\n";
                             }
                             array_pop($chain);
                             $depth -= 1;
