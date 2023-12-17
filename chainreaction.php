@@ -63,18 +63,22 @@ function chain_dive($next) {
     if ($chain_found) {
         //return 'chain_found';
     }
+    // Case word was added that was already in the chain
+    if(repeatCheck($chain)) {
+        return 'already_in_chain';
+    }
+    // Check if the "end" word, as given by the user, exists in the chain before the end of the chain. Issue #1
+    elseif ($depth < $chain_length_target && $chain[count($chain)-1] == $end) {
+        return 'premature_chain';
+    }
     // Case: Valid chain found!
-    if ($depth == $chain_length_target && $chain[count($chain)-1] == $end) {
+    elseif ($depth == $chain_length_target && $chain[count($chain)-1] == $end) {
         if ($debug) {echo "breaking\n";}
         $chain_found = TRUE;
         //$final_chain = $chain;
         array_push($final_chain, $chain);
         return 'chain_found';
-    }
-    // Case word was added that was already in the chain
-    elseif(repeatCheck($chain)) {
-        return 'already_in_chain';
-    }
+    }    
     // Case: Chain is not at max depth yet
     // Action: Recurse into $next's children
     elseif ($depth < $chain_length_target) {
@@ -122,6 +126,11 @@ function chain_dive($next) {
                         }
                         elseif ($action == 'aleady_in_chain') {
                             echo "action = already_in_chain\n";
+                            array_pop($chain);
+                            $depth -= 1;
+                        }
+                        elseif ($action == 'premature_chain') {
+                            if ($debug) {echo "action = premature_chain\n";}
                             array_pop($chain);
                             $depth -= 1;
                         }
