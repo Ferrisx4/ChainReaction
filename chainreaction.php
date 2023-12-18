@@ -60,9 +60,6 @@ function chain_dive($next) {
         }
     }
 
-    if ($chain_found) {
-        //return 'chain_found';
-    }
     // Case word was added that was already in the chain
     if(repeatCheck($chain)) {
         return 'already_in_chain';
@@ -86,26 +83,15 @@ function chain_dive($next) {
         //sleep(1);
         if (array_key_exists($next,$words)) {
             foreach ($words[$next] as $next_child) {
-                $depth += 1;
-                    if (TRUE) { 
+                $depth += 1;    
                     if ($debug) {
                         echo "testing " . $next . " > " . $next_child . "\n";
                         print_r($chain) . "\n";
-                    } 
-                    // if $next is already in chain, do nothing
-                    /*if (in_array($next_child, $chain) && $depth != 1) {
-                        if ($debug) {echo $next_child . " is already in the chain:\n";}
-                        //print_r($chain);
-                        $depth -= 1;
-                        return 'already_in_chain';
-                    }*/
-                    // if $next is childless, do nothing
-        
+                    }        
         
                     array_push($chain, $next_child);
                         // MAIN RECURSIVE CALL
                         $action = chain_dive($next_child);
-                        // MAIN RECURSIVE CALL
                         if ($action == 'reached_chain_length_target') {
                             if ($debug) {echo "reached_chain_length_target\n";}
                             $depth -= 1;
@@ -148,7 +134,7 @@ function chain_dive($next) {
                             array_pop($chain);
                             $depth -= 1;
                         }
-                    }
+                    
             }
         }
         else {
@@ -168,11 +154,6 @@ function chain_dive($next) {
         }
         return 'reached_chain_length_target';
     }
-    // Case: Reached end of depth-first traversal while less depth < chain_length_target
-    /*elseif ($depth < $chain_length_target && !in_array($next, $words)) {
-        //echo "Found word with no children, depth less than desired length\n";
-        return 'no_child';
-    }*/
     // Catch-all for other conditions
     else {
         if ($debug) {
