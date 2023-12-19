@@ -46,20 +46,6 @@ function chain_dive($next) {
     global $end;
     global $words;
 
-    $debug = FALSE;
-
-    if ($debug) {
-        echo "Chain at entrance to dive: \n";
-        print_r($chain);
-        echo "at depth: " . $depth . "\n";
-        echo "\n";
-
-        // Debug condition only
-        if (count($chain) != $depth) {
-            echo "\nDEPTH MISMATCH\n\n";
-        }
-    }
-
     // Case word was added that was already in the chain
     if(repeatCheck($chain)) {
         return;
@@ -70,7 +56,6 @@ function chain_dive($next) {
     }
     // Case: Valid chain found!
     elseif ($depth == $chain_length_target && $chain[count($chain)-1] == $end) {
-        if ($debug) {echo "breaking\n";}
         $chain_found = TRUE;
         array_push($final_chain, $chain);
         //return 'chain_found';
@@ -78,15 +63,10 @@ function chain_dive($next) {
     // Case: Chain is not at max depth yet
     // Action: Recurse into $next's children
     elseif ($depth < $chain_length_target) {
-        if ($debug) {echo "not at chain_length_target yet! (depth = " . $depth . ")\n";}
         //sleep(1);
         if (array_key_exists($next,$words)) {
             foreach ($words[$next] as $next_child) {
-                $depth += 1;    
-                if ($debug) {
-                    echo "testing " . $next . " > " . $next_child . "\n";
-                    print_r($chain) . "\n";
-                }        
+                $depth += 1;      
     
                 array_push($chain, $next_child);
                 // MAIN RECURSIVE CALL
@@ -96,8 +76,7 @@ function chain_dive($next) {
             }
         }
         else {
-            if ($debug) {echo $next . " was not in the words list! (depth: " . $depth . ")\n";}
-            return 'no_child';
+            return;
         }
     }
 }
