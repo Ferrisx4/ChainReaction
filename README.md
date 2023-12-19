@@ -71,8 +71,10 @@ The `chainreaction.php` script takes three arguments:
  3. length of word (inclusive)
 
 #### Example
-```bash
-$ php chainreaction.php
+
+Example 1
+```shell
+$ php chainreaction.php tipping goat 6
 Chain #1:
         tipping
         point
@@ -91,12 +93,45 @@ Chain #2:
         goat
 ```
 
+Example 2
+```shell
+Chain #1:
+	dog
+	leash
+	law
+	school
+	night
+	club
+	house
+
+
+Chain #2:
+	dog
+	leash
+	law
+	school
+	night
+	light
+	house
+
+...
+
+Chain #187:
+        dog
+        paddle
+        boat
+        ride
+        high
+        school
+        house
+```
+
 #### Planned functionality - Solving
  - [x] Multiple Chain Finding.
  - [ ] Toggleable chain finding (for large chain lengths, it can be quite slow to find all chains).
 
 ### Puzzle Creation (work-in-progress)
-The program will be able
+The program will be able generate a puzzle of a specified length with either a specified starting word or a word chosen at random from the database.
 
 ---
 
