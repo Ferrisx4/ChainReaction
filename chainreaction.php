@@ -62,19 +62,18 @@ function chain_dive($next) {
 
     // Case word was added that was already in the chain
     if(repeatCheck($chain)) {
-        return 'already_in_chain';
+        return;
     }
     // Check if the "end" word, as given by the user, exists in the chain before the end of the chain. Issue #1
     elseif ($depth < $chain_length_target && $chain[count($chain)-1] == $end) {
-        return 'premature_chain';
+        return;
     }
     // Case: Valid chain found!
     elseif ($depth == $chain_length_target && $chain[count($chain)-1] == $end) {
         if ($debug) {echo "breaking\n";}
         $chain_found = TRUE;
-        //$final_chain = $chain;
         array_push($final_chain, $chain);
-        return 'chain_found';
+        //return 'chain_found';
     }    
     // Case: Chain is not at max depth yet
     // Action: Recurse into $next's children
@@ -84,86 +83,21 @@ function chain_dive($next) {
         if (array_key_exists($next,$words)) {
             foreach ($words[$next] as $next_child) {
                 $depth += 1;    
-                    if ($debug) {
-                        echo "testing " . $next . " > " . $next_child . "\n";
-                        print_r($chain) . "\n";
-                    }        
-        
-                    array_push($chain, $next_child);
-                        // MAIN RECURSIVE CALL
-                        $action = chain_dive($next_child);
-                        if ($action == 'reached_chain_length_target') {
-                            if ($debug) {echo "reached_chain_length_target\n";}
-                            $depth -= 1;
-                            array_pop($chain);
-                        }
-                        elseif ($action == 'no_child') {
-                            if ($debug) {echo $next_child . " has no child, ending traversal\n";}
-                            $depth -= 1;
-                            $popped = array_pop($chain);
-                            if ($debug) {echo "popped " . $popped . " off\n";}
-                        }
-                        elseif ($action == 'chain_found')
-                        {
-                            if ($debug) {echo "Action = success\n";}
-                            array_pop($chain);
-                            $depth -= 1;
-                            //return 'chain_found';
-                        }
-                        elseif ($action == 'already_in_chain') {
-                            if ($debug) {echo "action = already_in_chain - action response\n";}
-                            array_pop($chain);
-                            $depth -= 1;
-                        }
-                        elseif ($action == 'premature_chain') {
-                            if ($debug) {echo "action = premature_chain\n";}
-                            array_pop($chain);
-                            $depth -= 1;
-                        }
-                        else {
-                            // At this point lets assume this word didn't pan out and pop it, and also decrement depth.
-                            if ($debug) {
-                                echo "Unhandled action";
-                                echo "\tCurrent chain: \n";
-                                print_r($chain);
-                                echo "\tNext word: " . $next_child . "\n";
-                                echo "\tChain length target: " . $chain_length_target . "\n";
-                                echo "\tDepth: " . $depth . "\n\n";
-                                echo "\tUnhandled Action: " . $action . "\n\n";
-                            }
-                            array_pop($chain);
-                            $depth -= 1;
-                        }
-                    
+                if ($debug) {
+                    echo "testing " . $next . " > " . $next_child . "\n";
+                    print_r($chain) . "\n";
+                }        
+    
+                array_push($chain, $next_child);
+                // MAIN RECURSIVE CALL
+                chain_dive($next_child);
+                $depth -= 1;
+                array_pop($chain);                    
             }
         }
         else {
             if ($debug) {echo $next . " was not in the words list! (depth: " . $depth . ")\n";}
             return 'no_child';
-        }
-    }
-    // Case: Reached designated chain length but the chain is not solved
-    // Action: decrement depth
-    //         pop the end off the array
-    elseif ($depth == $chain_length_target) {
-        if ($debug) {
-            echo "\nChain is at depth, but not solved\n";
-            print_r($chain);
-            echo "Depth: " . $depth . "\n";
-            echo "\n";
-        }
-        return 'reached_chain_length_target';
-    }
-    // Catch-all for other conditions
-    else {
-        if ($debug) {
-            echo "\nUnhandled condition, printing...\n";
-            echo "\tCurrent chain: \n";
-            print_r($chain);
-            echo "\tNext word: " . $next . "\n";
-            echo "\tChain length: " . $chain_length_target . "\n";
-            echo "\tDepth: " . $depth . "\n";
-            echo "END OF UNHANDLED CONDITION\n\n";
         }
     }
 }
@@ -175,12 +109,7 @@ function chain_dive($next) {
 function repeatCheck($chain) {
     $count = array_count_values($chain);
     $last = array_pop($chain);
-    if ($count[$last] > 1) {
-        return TRUE;
-    }
-    else {
-        return FALSE;
-    }
+    return $count[$last] > 1;
 }
 
 $depth = 1;
