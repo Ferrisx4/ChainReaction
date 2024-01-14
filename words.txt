@@ -617,7 +617,7 @@ mother,goose,theresa,board,ship,earth,hen,nature
 cross,walk,bow,country,talk,word
 triple,threat,play,crown
 threat,level
-three,stooges,pointer,amigos
+three,stooges,pointer,amigos,dimensional
 upright,piano
 electric,piano,avenue,company,griddle,trimmer,guitar,car,razor,vehicle
 stomach,pump,flu,crunch,lining
@@ -799,7 +799,7 @@ copy,right,cat
 homecoming,queen
 queen,mother,victoria,size
 company,man,picnic,retreat,store
-ride,along,off,share,high
+ride,along,off,share
 gravy,train,boat
 meet,halfway,cute
 fantastic,four
@@ -2676,3 +2676,6 @@ statement,piece
 toss,up
 razzle,dazzle
 dodge,ball
+wrinkle,cream,remover
+butt,head,wipe,sore
+wipe,out,away
