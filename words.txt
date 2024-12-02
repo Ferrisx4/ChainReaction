@@ -30,7 +30,7 @@ turn,red,right,left,around,up,over,loose,sour,signal,indicator
 red,sea,rum,dead,wedding,herring,tape,head,neck,square,giant,flag,card,meat,pepper,lobster,ant,sox,velvet,cross,lips,panda,maple,carpet,wood
 wild,card,life,west,flower,pitch,strawberries,strawberry,child
 crack,open
-open,sesame,ocean,door,house,road,book,season,air
+open,sesame,ocean,door,house,road,book,season,air,beta
 sesame,street
 street,smart,light,lamp,legal,sign,food,car,taco,sweeper,corner,name
 smart,cookie,car,ass,water,lock
@@ -49,7 +49,7 @@ town,square,house,council,hall,gossip
 chili,powder,cheese,dog,bowl
 powder,keg,puff,blue
 baby,grand,talk,oil,bump,blanket,powder,girl,boy,face,formula,food,shark,fat,rattle,yoda,genius,shower
-grand,slam,piano,father,child,mother,larceny,canyon,stand
+grand,slam,piano,father,child,mother,larceny,canyon,stand,illusion
 slam,dunk
 poetry,slam,sitting
 basic,training,cable
@@ -169,7 +169,7 @@ door,bell,way,mat,alarm,step,frame,stop,prize,knob,hinge,jamb,lock,man,handle,da
 order,form,out,dinner,online
 mud,pie,puddle,room
 pie,crust,plate,chart
-bank,teller,statement,account,check,transfer,vault,robber,loan,holiday
+bank,teller,statement,account,check,transfer,vault,robber,loan,holiday,angle
 secret,keeper,sauce,recipe,agent,santa,mission,service,shopper
 trapper,keeper
 island,hopper,nation
@@ -198,7 +198,7 @@ cough,drop,syrup
 fast,lane,food,forward
 passing,lane,fad,gas,gear
 lonely,road
-high,road,fashion,five,school,pitch,strung,roller,score,seas,risk,ground,gear,speed,class,wire
+high,road,fashion,five,school,pitch,strung,roller,score,seas,risk,ground,gear,speed,class,wire,temperature
 double,talk,play,space,trouble,wide,barrel,time,take,down,dutch,think,coupon
 stunt,double,man
 talk,radio,back,show,shop,turkey,over,fast
@@ -267,7 +267,7 @@ wedding,gown,ring,venue,gift,reception,planner,singer,guest,soup,present,night,m
 prayer,book
 stained,glass
 dead,space,air,beat,last,center,stop,drop,weight,name
-game,time,face,on,show,over,play,night,shop,hunter,board,ball,player,changer,cock,bird,plan,warden
+game,time,face,on,show,over,play,night,shop,hunter,board,ball,player,changer,cock,bird,plan,warden,cartridge,disc
 time,away,out,limit,management,zone,travel,off,sheet,honored,machine,share,magazine,piece,sensitive,period,check,traveler,table,trial,card,flies,change,release,stamp,frame
 steering,wheel,column
 wheel,alignment,cleaner,house,chair
@@ -414,7 +414,7 @@ carriage,horse
 pipe,bomb,dream,cleaner,dreams,organ
 federal,agent,government,express,court,holiday
 plastic,bag
-camera,bag,lens,phone
+camera,bag,lens,phone,view
 cinnamon,stick,sugar,toast
 bulletproof,vest
 armored,car
@@ -450,7 +450,7 @@ bite,size,mark,down,sized
 boot,print,camp,strap
 foot,print,long,doctor,ball,locker,soldier,fungus,loose
 shotgun,wedding,shell
-dungeon,crawl
+dungeon,crawl,master
 whale,watching,watch,wars,pod,tale,tail
 rain,drop,check,forest,fall,gutter
 paper,bag,product,towel,flower,route,thin,mache,plane,boy,tape,trail,airplane,weight,doll,clip,salesman
@@ -471,7 +471,7 @@ tissue,box,paper
 adoption,agency
 penny,loafer
 surgical,precision
-weather,forecaster,forecast,system,balloon,front,report,outlook,channel
+weather,forecaster,forecast,system,balloon,front,report,outlook,channel,radar
 drunk,tank
 rooster,teeth
 murder,victim,suicide
@@ -484,7 +484,7 @@ pup,tent
 suit,jacket,case,vest,up
 tool,box,chest,shed
 brake,fluid,line,pedal,pump,stand
-gold,medal,mine,leaf,standard,chain,bond,brick,rush
+gold,medal,mine,leaf,standard,chain,bond,brick,rush,plated
 silver,medal,screen,dollar,spoon,lining
 bronze,medal,age
 dirty,blonde,bomb,dozen,laundry,look,bird
@@ -518,7 +518,7 @@ lock,pick,step,smith,horns,out
 elevator,shaft,pitch,music
 gear,shift,stick,shifter
 transmission,fluid
-record,player,label,keeper,high,holder
+record,player,label,keeper,high,holder,low
 piano,man,lesson
 shelf,stereo,space,life
 stereo,system
@@ -687,7 +687,7 @@ winky,face
 pump,iron
 pony,tail,express
 tail,gate,feather,winds,wind,light,bone,end
-alternative,rock,facts
+alternative,rock,facts,fact
 place,mat,card,kicker,holder
 loud,speaker
 speaker,phone
@@ -1052,7 +1052,7 @@ shirt,sleeve,tail
 knitting,needle
 piercing,scream
 scream,queen
-low,blow,ball
+low,blow,ball,temperature
 blow,dry,off,away,down,smoke,hard
 champagne,cork,cocktail
 cork,screw
@@ -1078,7 +1078,7 @@ move,over
 less,fortunate,than
 mess,hall
 danielle,steel
-steel,drum,wool
+steel,drum,wool,foundry
 spun,silk
 silk,sheet,shirt,worm
 saint,nick
@@ -1268,7 +1268,7 @@ lady,godiva,bug,like
 godiva,chocolates
 fad,diet
 australian,shepherd,open
-bare,foot,necessity
+bare,foot,necessity,metal
 media,circus,player
 circus,peanut,tent,clown,peanuts
 only,child
@@ -1729,7 +1729,7 @@ conference,call,room
 helium,balloon
 your,mom,honor
 bend,over
-above,board,ground
+above,board,ground,average
 reckless,abandon
 all,aboard,clear,right,new
 pepperoni,pizza
@@ -2011,7 +2011,7 @@ nutrition,facts,expert
 swatch,watch
 decked,out
 operator,error
-error,code
+error,code,log
 skinny,jeans
 single,mom,dad,minded,ladies,bed
 living,single,wage,room
@@ -2057,7 +2057,7 @@ block,party,letter
 version,control
 dependency,hell
 classic,car,rock
-current,events,affairs
+current,events,affairs,draw
 bust,size
 diplomatic,relations,immunity
 international,incident
@@ -2292,7 +2292,7 @@ floor,wax,lamp,pan,plan,space
 eject,button
 tobacco,field,cigarette
 zero,tolerance,calories
-below,zero
+below,zero,average
 tolerance,level
 charlie,brown
 missing,out,you,children,person
@@ -2453,7 +2453,7 @@ publicity,stunt
 have,fun
 nutter,butter
 view,finder,point
-alternate,reality
+alternate,reality,dimension
 lace,wing,curtain
 hornet,nest
 cursive,writing,alphabet
@@ -2679,3 +2679,12 @@ dodge,ball
 wrinkle,cream,remover
 butt,head,wipe,sore
 wipe,out,away
+raspberry,pi
+grandmother,clock
+anniversary,clock
+sync,up
+average,temperature
+beta,tester,trial,particle,version
+bunk,bed,mate
+stainless,steel
+command,prompt,center,button
