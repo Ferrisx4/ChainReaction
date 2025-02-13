@@ -45,7 +45,7 @@ salad,bowl,dressing,bar,fingers,fork
 bread,bowl,crumbs,maker,pan,board,pudding
 pizza,cutter,slice,box,oven,pie,party,parlor,place
 square,pizza,dance,knot,root,peg,meal,inch
-town,square,house,council,hall,gossip
+town,square,house,council,hall,gossip,car
 chili,powder,cheese,dog,bowl
 powder,keg,puff,blue
 baby,grand,talk,oil,bump,blanket,powder,girl,boy,face,formula,food,shark,fat,rattle,yoda,genius,shower
@@ -162,7 +162,7 @@ cottage,cheese
 nap,time
 tennis,court,ball,racket,match,elbow,shoe
 court,martial,appearance,yard,house,jester,ship,stenographer,ruling
-car,race,seat,window,windshield,trunk,culture,rental,alarm,jack,dealer,door,wash,battery,crash,accident,wreck,pool,insurance,park,tire,detailing,loan,port
+car,race,seat,window,windshield,trunk,culture,rental,alarm,jack,dealer,door,wash,battery,crash,accident,wreck,pool,insurance,park,tire,detailing,loan,port,chase
 belt,loop,buckle,way
 key,ring,note,pad,lime,word,chain,hole,stone
 door,bell,way,mat,alarm,step,frame,stop,prize,knob,hinge,jamb,lock,man,handle,dash
@@ -1016,7 +1016,7 @@ period,piece
 piece,work,meal
 aerobics,class
 grateful,dead
-resort,hotel
+resort,hotel,town
 california,condor
 whiskey,sour,glass
 sour,dough,patch,milk,cream
@@ -1068,7 +1068,7 @@ fort,worth
 worth,doing
 junk,food,shop,drawer,mail
 tuna,fish,salad
-stick,together,bug,shift,around,figure,ball,insect
+stick,together,bug,shift,around,figure,ball,insect,out
 mix,tape
 main,street,squeeze,event,character,course,drag
 cap,size
@@ -1510,7 +1510,7 @@ packing,tape,slip,up,heat
 some,thing
 untimely,death
 chevy,chase
-chase,after,bank
+chase,after,bank,rainbows
 after,hours,care,dark,dinner,glow
 lobster,bisque
 cool,off,kid,cat,jazz,beans
@@ -2506,7 +2506,7 @@ release,date
 guess,what,who,work
 heavenly,body
 spelling,bee,test
-healthy,living,diet
+healthy,living,diet,gut,glow
 wage,increase
 hourly,wage
 weigh,station
@@ -2688,3 +2688,7 @@ beta,tester,trial,particle,version
 bunk,bed,mate
 stainless,steel
 command,prompt,center,button
+wake,turbulence,up,forest
+crash,landing,course
+growth,spurt
+fisher,price,cat
