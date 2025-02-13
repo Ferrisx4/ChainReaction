@@ -723,7 +723,7 @@ rehearsal,dinner
 try,out,again
 throw,out,pillow,away,back,shade
 fashion,week,police,model,statement,sense,show
-police,car,radio,station,chase
+police,car,radio,station,chase,blotter
 break,through,bread,open,out,up,fast,free,even,dance,in,ground,down
 station,break,agent,wagon
 ghost,story,hunter,town
@@ -837,7 +837,7 @@ sharp,eyes
 zodiac,sign
 sign,out,language,post,off,away,here
 wicked,witch
-witch,craft,doctor
+witch,craft,doctor,trial,hunt
 craft,store,brewery,table
 store,room,bought,brand,wide,credit,house,front
 groundhog,day
@@ -1252,7 +1252,7 @@ friends,forever
 friendly,fire,wager
 nut,butter,cracker
 plane,wing,ticket
-trading,post
+trading,post,card,floor
 carpet,cleaner,burn
 shampoo,bottle
 carry,over
@@ -1850,7 +1850,7 @@ graduate,student
 grad,student
 jean,shorts,jacket
 curly,hair
-tattoo,removal,artist
+tattoo,removal,artist,parlor
 anchors,aweigh
 times,square,table
 crowd,control,pleaser,funding,surfing
@@ -2692,3 +2692,9 @@ wake,turbulence,up,forest
 crash,landing,course
 growth,spurt
 fisher,price,cat
+disorderly,conduct
+arrest,warrant,record
+witching,hour
+stranger,danger,things
+parental,controls,rights,guardian,leave
+parenting,classes,skills
