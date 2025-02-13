@@ -12,7 +12,7 @@ This program consists of several parts:
  - take a list of pairs of words that work as chains and feed them into the data structure, outlined below.
 
 ### Data Structure
-The data structure that makes the most sense for this project and its design goals is an associate array. In PHP, these are
+The data structure that makes the most sense for this project and its design goals is an associative array. In PHP, these are
 implemented with hash tables which should be fast enough. Each
 "parent" word is the key in the main words array, and each value is an array itself of "child" words. For the most part, there will not be many children per parent, but children can be their own parents.
 The downside of this approach is that the memory required to store the word list may expand greatly as each "child" word will be stored as a string, and many words will be repeated throughout the words list. For instance:
