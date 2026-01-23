@@ -71,7 +71,7 @@ function save(&$words) {
     $handle = fopen(FILE, "w") or die("Unable to open file for writing.\n");
     foreach($words as $parent => $child) {
         array_unshift($child,$parent);
-        fputcsv($handle, $child);
+        fputcsv($handle, $child, escape:"\\");
     }
     fclose($handle);
 }
