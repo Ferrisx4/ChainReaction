@@ -14,7 +14,7 @@ else {
 $words = [];
 $handle = fopen("words.txt", "r") or die("Unable to open file for reading.\n");
 if ($handle) {
-    while (($line = fgetcsv($handle)) !== false) {
+    while (($line = fgetcsv($handle, escape:"\\")) !== false) {
         // process the line read.
         $key = array_shift($line);
         $words[$key] = $line;
